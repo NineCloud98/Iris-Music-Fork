@@ -38,17 +38,22 @@ async function play(client, interaction) {
             return;
         }
 
-        const player = client.riffy.createConnection({
-            guildId: interaction.guildId,
-            voiceChannel: interaction.member.voice.channelId,
-            textChannel: interaction.channelId,
-            deaf: true
-        });
+        // Intenta obtener el jugador existente
+        let player = client.riffy.players.get(interaction.guildId);
+
+        // Si no existe, crea uno nuevo
+        if (!player) {
+            player = client.riffy.createConnection({
+                guildId: interaction.guildId,
+                voiceChannel: interaction.member.voice.channelId,
+                textChannel: interaction.channelId,
+                deaf: true
+            });
+        }
 
         await interaction.deferReply();
 
         const resolve = await client.riffy.resolve({ query: query, requester: interaction.user.username });
-        //console.log('Resolve response:', resolve);
 
         if (!resolve || typeof resolve !== 'object') {
             throw new TypeError('Resolve response is not an object');
@@ -101,31 +106,10 @@ async function play(client, interaction) {
                     url: config.SupportServer
                 })
                 .setDescription('**➡️ Your request has been successfully processed.**\n**➡️ Please use buttons to control playback**')
-                 .setFooter({ text: '🎶 Enjoy your music!'}),
-
-            new EmbedBuilder()
-                .setColor(config.embedColor)
-                .setAuthor({
-                    name: 'Request Update',
-                    iconURL: config.CheckmarkIcon,
-                    url: config.SupportServer
-                })
-                .setDescription('**➡️ Your request has been successfully processed.**\n**➡️ Please use buttons to control playback**')
-                 .setFooter({ text: '🎶 Enjoy your music!'}),
-
-            new EmbedBuilder()
-                .setColor(config.embedColor)
-                .setAuthor({
-                    name: 'Request Update',
-                    iconURL: config.CheckmarkIcon,
-                    url: config.SupportServer
-                })
-                .setDescription('**➡️ Your request has been successfully processed.**\n**➡️ Please use buttons to control playback**')
-                .setFooter({ text: '🎶 Enjoy your music!'})
+                .setFooter({ text: '🎶 Enjoy your music!'}),
         ];
 
-        const randomIndex = Math.floor(Math.random() * embeds.length);
-        await interaction.followUp({ embeds: [embeds[randomIndex]] });
+        await interaction.followUp({ embeds: [embeds[0]] });
 
     } catch (error) {
         console.error('Error processing play command:', error);
@@ -152,6 +136,7 @@ module.exports = {
     queueNames: queueNames,
     requesters: requesters 
 };
+
 
 
 
