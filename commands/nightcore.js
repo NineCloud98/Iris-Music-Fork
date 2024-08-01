@@ -1,4 +1,4 @@
-const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const config = require("../config.js");
 
 async function nightcore(client, interaction) {
@@ -25,7 +25,7 @@ async function nightcore(client, interaction) {
             return;
         }
 
-        await player.setFilter({
+        await player.setFilters({
             timescale: { 
                 speed: 1.2, 
                 pitch: 1.2, 
@@ -53,7 +53,7 @@ async function nightcore(client, interaction) {
 module.exports = {
     name: "nightcore",
     description: "Activate Nightcore mode",
-    permissions: "0x0000000000000800",
     options: [],
     run: nightcore
 };
+
