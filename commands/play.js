@@ -101,7 +101,7 @@ async function play(client, interaction) {
                     url: config.SupportServer
                 })
                 .setDescription('**➡️ Your request has been successfully processed.**\n**➡️ Please use buttons to control playback**')
-                 .setFooter({ text: '🎶 Enjoy your music!'}),
+                 .setFooter({ text: '🎶 Enjoy your music! / Ahorita no funciona el cambio de idioma, problemas tecnicos! unu PD: Ola soy homero chino'}),
 
             new EmbedBuilder()
                 .setColor(config.embedColor)
@@ -111,7 +111,7 @@ async function play(client, interaction) {
                     url: config.SupportServer
                 })
                 .setDescription('**➡️ Your request has been successfully processed.**\n**➡️ Please use buttons to control playback**')
-                 .setFooter({ text: '🎶 Enjoy your music!'}),
+                 .setFooter({ text: '🎶 Enjoy your music! / Ahorita no funciona el cambio de idioma, problemas tecnicos! unu PD: Ola soy homero chino'}),
 
             new EmbedBuilder()
                 .setColor(config.embedColor)
