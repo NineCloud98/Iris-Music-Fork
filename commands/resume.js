@@ -9,7 +9,7 @@ async function resume(client, interaction) {
             const errorEmbed = new EmbedBuilder()
                 .setColor('#ff0000')
                 .setTitle('Error')
-                .setDescription('❌ No active player found.');
+                .setDescription('❌ No hay una cola de canciones activa.');
 
             await interaction.reply({ embeds: [errorEmbed], ephemeral: true });
             return;
@@ -19,16 +19,16 @@ async function resume(client, interaction) {
 
         const embed = new EmbedBuilder()
             .setColor(config.embedColor)
-            .setDescription('**▶️ Playback has been resumed!**');
+            .setDescription('**▶️ Reproductor resumido**');
 
         await interaction.reply({ embeds: [embed] });
 
     } catch (error) {
-        console.error('Error processing resume command:', error);
+        console.error('Error al procesar el comando de resume:', error);
         const errorEmbed = new EmbedBuilder()
             .setColor('#ff0000')
             .setTitle('Error')
-            .setDescription('❌ An error occurred while processing your request.');
+            .setDescription('❌ Ha ocurrido un errror al procesar tu comando, oh no!.');
 
         await interaction.reply({ embeds: [errorEmbed], ephemeral: true });
     }
@@ -36,7 +36,7 @@ async function resume(client, interaction) {
 
 module.exports = {
     name: "resume",
-    description: "Resume the current song",
+    description: "Resume la cola de reproduccion actual",
     permissions: "0x0000000000000800",
     options: [],
     run: resume
