@@ -10,36 +10,36 @@ async function volume(client, interaction) {
             const errorEmbed = new EmbedBuilder()
                 .setColor('#ff0000')
                 .setTitle('Error')
-                .setDescription('❌ No active player found.');
+                .setDescription('❌ No hay una cola de reproduccion activa.');
 
             await interaction.reply({ embeds: [errorEmbed], ephemeral: true });
             return;
         }
 
         if (volume < 0 || volume > 100) {
-            return interaction.reply({ content: 'Volume level must be between 0 and 100.', ephemeral: true });
+            return interaction.reply({ content: 'Volumen de 0 a 100.', ephemeral: true });
         }
 
         player.setVolume(volume);
 
         const embed = new EmbedBuilder()
             .setColor(config.embedColor)
-            .setDescription(`🔊 Volume has been set to **${volume}%**`);
+            .setDescription(`🔊 El volumen ha sido fijado a: **${volume}%**`);
 
         return interaction.reply({ embeds: [embed] });
     } catch (error) {
-        console.error('Error setting volume:', error);
-        await interaction.reply({ content: 'An error occurred while setting the volume.', ephemeral: true });
+        console.error('Error al editar el volumen:', error);
+        await interaction.reply({ content: 'Ha ocurrido un error al editar el volumen.', ephemeral: true });
     }
 }
 
 module.exports = {
     name: "volume",
-    description: "Set the volume of the current song",
+    description: "Fija el volumen de una cancion",
     permissions: "0x0000000000000800",
     options: [{
-        name: 'level',
-        description: 'Volume level (0-100)',
+        name: 'nivel',
+        description: 'Nivel de volumen (0-100)',
         type: ApplicationCommandOptionType.Integer,
         required: true
     }],
