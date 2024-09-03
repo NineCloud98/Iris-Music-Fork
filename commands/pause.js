@@ -9,7 +9,7 @@ async function pause(client, interaction) {
             const errorEmbed = new EmbedBuilder()
                 .setColor('#ff0000')
                 .setTitle('Error')
-                .setDescription('❌ No active player found.');
+                .setDescription('❌ No hay una cola de reproduccion activa.');
 
             await interaction.reply({ embeds: [errorEmbed], ephemeral: true });
             return;
@@ -19,7 +19,7 @@ async function pause(client, interaction) {
 
         const embed = new EmbedBuilder()
             .setColor(config.embedColor)
-            .setDescription('**⏸️ Playback has been paused!**');
+            .setDescription('**⏸️ Reproductor pausado**');
 
         await interaction.reply({ embeds: [embed] });
 
@@ -28,7 +28,7 @@ async function pause(client, interaction) {
         const errorEmbed = new EmbedBuilder()
             .setColor('#ff0000')
             .setTitle('Error')
-            .setDescription('❌ An error occurred while processing your request.');
+            .setDescription('❌ Un error al procesar tu comando, oh no!.');
 
         await interaction.reply({ embeds: [errorEmbed], ephemeral: true });
     }
@@ -36,7 +36,7 @@ async function pause(client, interaction) {
 
 module.exports = {
     name: "pause",
-    description: "Pause the current song",
+    description: "Pausa el reproductor",
     permissions: "0x0000000000000800",
     options: [],
     run: pause
