@@ -9,7 +9,7 @@ async function stop(client, interaction) {
             const errorEmbed = new EmbedBuilder()
                 .setColor('#ff0000')
                 .setTitle('Error')
-                .setDescription('❌ No active player found.');
+                .setDescription('❌ No hay una cola de reproduccion activa.');
 
             await interaction.reply({ embeds: [errorEmbed], ephemeral: true });
             return;
@@ -20,16 +20,16 @@ async function stop(client, interaction) {
 
         const embed = new EmbedBuilder()
             .setColor(config.embedColor)
-            .setDescription('**⏹️ Playback has been stopped and player destroyed!**');
+            .setDescription('**⏹️ Reproductor finalizado**');
 
         await interaction.reply({ embeds: [embed] });
 
     } catch (error) {
-        console.error('Error processing stop command:', error);
+        console.error('Error al procesar el comando stop:', error);
         const errorEmbed = new EmbedBuilder()
             .setColor('#ff0000')
             .setTitle('Error')
-            .setDescription('❌ An error occurred while processing your request.');
+            .setDescription('❌ Ha ocurrido un error al procesar tu comando, oh no!.');
 
         await interaction.reply({ embeds: [errorEmbed], ephemeral: true });
     }
@@ -37,7 +37,7 @@ async function stop(client, interaction) {
 
 module.exports = {
     name: "stop",
-    description: "Stop the current song and destroy the player",
+    description: "Detiene el reproductor",
     permissions: "0x0000000000000800",
     options: [],
     run: stop
