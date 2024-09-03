@@ -22,7 +22,7 @@ async function nowPlaying(client, interaction) {
             const errorEmbed = new EmbedBuilder()
                 .setColor('#ff0000')
                 .setTitle('Error')
-                .setDescription('❌ There is no song currently playing.');
+                .setDescription('❌ No hay una cancion reproduciendose.');
 
             await interaction.reply({ embeds: [errorEmbed], ephemeral: true });
             return;
@@ -33,18 +33,18 @@ async function nowPlaying(client, interaction) {
 
         const npEmbed = new EmbedBuilder()
             .setColor(config.embedColor)
-            .setTitle('🎵 Now Playing')
+            .setTitle('🎵 Ahora reproduciendo...')
             .setDescription(`[${player.current.info.title} - ${player.current.info.author}](${player.current.info.uri})\n\n${progressBar}`)
             .setThumbnail(player.current.info.thumbnail)
 
         await interaction.reply({ embeds: [npEmbed] });
 
     } catch (error) {
-        console.error('Error processing now playing command:', error);
+        console.error('Error al procesar el comando de now playing:', error);
         const errorEmbed = new EmbedBuilder()
             .setColor('#ff0000')
             .setTitle('Error')
-            .setDescription('❌ An error occurred while processing your request.');
+            .setDescription('❌ Ha ocurrido un error al usar el comando, oh no!.');
 
         await interaction.reply({ embeds: [errorEmbed], ephemeral: true });
     }
@@ -52,7 +52,7 @@ async function nowPlaying(client, interaction) {
 
 module.exports = {
     name: "np",
-    description: "Displays the currently playing song with a progress bar",
+    description: "Despliega el estado de la cancion que se esta reproduciendo",
     permissions: "0x0000000000000800",
     options: [],
     run: nowPlaying,
