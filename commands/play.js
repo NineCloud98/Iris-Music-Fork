@@ -1,23 +1,3 @@
-/*
-
-  ________.__                        _____.___.___________
- /  _____/|  | _____    ____  ____   \__  |   |\__    ___/
-/   \  ___|  | \__  \ _/ ___\/ __ \   /   |   |  |    |   
-\    \_\  \  |__/ __ \\  \__\  ___/   \____   |  |    |   
- \______  /____(____  /\___  >___  >  / ______|  |____|   
-        \/          \/     \/    \/   \/                  
-
-╔════════════════════════════════════════════════════════════════════════╗
-║                                                                        ║
-║  ## Created by GlaceYT!                                                ║
-║  ## Feel free to utilize any portion of the code                       ║
-║  ## DISCORD :  https://discord.com/invite/xQF9f9yUEM                   ║
-║  ## YouTube : https://www.youtube.com/@GlaceYt                         ║
-║                                                                        ║
-╚════════════════════════════════════════════════════════════════════════╝
-
-
-*/
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 const config = require("../config.js");
 
@@ -31,8 +11,8 @@ async function play(client, interaction) {
         if (!interaction.member.voice.channelId) {
             const embed = new EmbedBuilder()
                 .setColor('#ff0000')
-                .setTitle('Voice Channel Required')
-                .setDescription('❌ You need to be in a voice channel to use this command.');
+                .setTitle('Canal de voz requerido')
+                .setDescription('❌ Necesitas estar en un canal de voz, tonto.');
 
             await interaction.reply({ embeds: [embed], ephemeral: true });
             return;
@@ -100,8 +80,8 @@ async function play(client, interaction) {
                     iconURL: config.CheckmarkIcon,
                     url: config.SupportServer
                 })
-                .setDescription('**➡️ Your request has been successfully processed.**\n**➡️ Please use buttons to control playback**')
-                 .setFooter({ text: '🎶 Enjoy your music! / Ahorita no funciona el cambio de idioma, problemas tecnicos! unu PD: Ola soy homero chino'}),
+                .setDescription('**➡🦊 Tu cancion ha sido añadida a la cola.**\n**➡🎛️ Usa los botones para controlar la musica**')
+                 .setFooter({ text: '🎶 Disfruta tu musica! / Ahorita no funciona el cambio de idioma en ingles o español, problemas tecnicos! unu PD: Ola soy homero chino'}),
 
             new EmbedBuilder()
                 .setColor(config.embedColor)
@@ -110,8 +90,8 @@ async function play(client, interaction) {
                     iconURL: config.CheckmarkIcon,
                     url: config.SupportServer
                 })
-                .setDescription('**➡️ Your request has been successfully processed.**\n**➡️ Please use buttons to control playback**')
-                 .setFooter({ text: '🎶 Enjoy your music! / Ahorita no funciona el cambio de idioma, problemas tecnicos! unu PD: Ola soy homero chino'}),
+                .setDescription('**➡🦊 Tu cancion ha sido añadida a la cola.**\n**➡🎛️ Usa los botones para controlar la musica**')
+                 .setFooter({ text: '🎶 Disfruta tu musica! / Ahorita no funciona el cambio de idioma en ingles o español, problemas tecnicos! unu PD: Ola soy homero chino'}),
 
             new EmbedBuilder()
                 .setColor(config.embedColor)
@@ -120,8 +100,8 @@ async function play(client, interaction) {
                     iconURL: config.CheckmarkIcon,
                     url: config.SupportServer
                 })
-                .setDescription('**➡️ Your request has been successfully processed.**\n**➡️ Please use buttons to control playback**')
-                .setFooter({ text: '🎶 Enjoy your music! / Ahorita no funciona el cambio de idioma, problemas tecnicos! unu PD: Ola soy homero chino'})
+                .setDescription('**➡🦊 Tu cancion ha sido añadida a la cola.**\n**➡🎛️ Usa los botones para controlar la musica**')
+                .setFooter({ text: '🎶 Disfruta tu musica! / Ahorita no funciona el cambio de idioma en ingles o español, problemas tecnicos! unu PD: Ola soy homero chino'})
         ];
 
         const randomIndex = Math.floor(Math.random() * embeds.length);
@@ -132,7 +112,7 @@ async function play(client, interaction) {
         const errorEmbed = new EmbedBuilder()
             .setColor('#ff0000')
             .setTitle('Error')
-            .setDescription('❌ An error occurred while processing your request.');
+            .setDescription('❌ Un error durante la reproduccion ha ocurrido.');
 
         await interaction.editReply({ embeds: [errorEmbed] });
     }
@@ -140,11 +120,11 @@ async function play(client, interaction) {
 
 module.exports = {
     name: "play",
-    description: "Play a song from a name or link",
+    description: "Reproduce una cancion o playslist",
     permissions: "0x0000000000000800",
     options: [{
         name: 'name',
-        description: 'Enter song name / link or playlist',
+        description: 'Introduce una cancion / playlist',
         type: ApplicationCommandOptionType.String,
         required: true
     }],
