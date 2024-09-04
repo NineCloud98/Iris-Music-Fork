@@ -59,7 +59,7 @@ function initializePlayer(client) {
                 name: 'Now Playing',
                 iconURL: config.MusicIcon
             })
-            .setDescription('🎶 **Controls:**\n 🔁 `Loop`, ❌ `Disable`, ⏭️ `Skip`, 📜 `Queue`, 🗑️ `Clear`\n ⏹️ `Stop`, ⏸️ `Pause`, ▶️ `Resume`, 🔊 `Vol +`, 🔉 `Vol -`')
+            .setDescription('🎶🦊 **Controles:**\n 🔁 `Loop`, ❌ `Deshabilitar`, ⏭️ `Skip`, 📜 `Cola`, 🗑️ `Limpiar`\n ⏹️ `Parar`, ⏸️ `Pausar`, ▶️ `Resumir`, 🔊 `Vol +`, 🔉 `Vol -`')
             .setImage('attachment://musicard.png')
             .setColor(config.embedColor);
 
@@ -86,7 +86,7 @@ function initializePlayer(client) {
             if (!voiceChannel || voiceChannel.id !== playerChannel) {
                 const vcEmbed = new EmbedBuilder()
                     .setColor(config.embedColor)
-                    .setDescription('🔒 **You need to be in the same voice channel to use the controls!**');
+                    .setDescription('🔒 **Necesitas estar en el mismo canal para usar los controles!**');
                 const sentMessage = await channel.send({ embeds: [vcEmbed] });
                 setTimeout(() => sentMessage.delete().catch(console.error), config.embedTimeout * 1000);
                 return;
@@ -98,7 +98,7 @@ function initializePlayer(client) {
                 player.stop();
                 const skipEmbed = new EmbedBuilder()
                     .setColor(config.embedColor)
-                    .setTitle("⏭️ **Player will play the next song!**")
+                    .setTitle("⏭️ **PReproduciendo la sioguiente cancion!**")
                     .setTimestamp();
 
                 const sentMessage = await channel.send({ embeds: [skipEmbed] });
@@ -107,11 +107,11 @@ function initializePlayer(client) {
                 disableLoop(player, channel);
             } else if (i.customId === 'showQueue') {
                 const queueMessage = queueNames.length > 0 ?
-                    `🎵 **Now Playing:**\n${formatTrack(queueNames[0])}\n\n📜 **Queue:**\n${queueNames.slice(1).map((song, index) => `${index + 1}. ${formatTrack(song)}`).join('\n')}` :
-                    "The queue is empty.";
+                    `🎵 **Ahora reproduciendo:**\n${formatTrack(queueNames[0])}\n\n📜 **Cola:**\n${queueNames.slice(1).map((song, index) => `${index + 1}. ${formatTrack(song)}`).join('\n')}` :
+                    "La cola esta vacia.";
                 const queueEmbed = new EmbedBuilder()
                     .setColor(config.embedColor)
-                    .setTitle("📜 **Current Queue**")
+                    .setTitle("📜 **Cola de reproduccion**")
                     .setDescription(queueMessage);
 
                 const sentMessage = await channel.send({ embeds: [queueEmbed] });
@@ -120,7 +120,7 @@ function initializePlayer(client) {
                 clearQueue(player);
                 const clearQueueEmbed = new EmbedBuilder()
                     .setColor(config.embedColor)
-                    .setTitle("🗑️ **Queue has been cleared!**")
+                    .setTitle("🗑️ **La cola ha sido limpiada (no la tuya)!**")
                     .setTimestamp();
 
                 const sentMessage = await channel.send({ embeds: [clearQueueEmbed] });
@@ -130,7 +130,7 @@ function initializePlayer(client) {
                 player.destroy();
                 const stopEmbed = new EmbedBuilder()
                     .setColor(config.embedColor)
-                    .setDescription('⏹️ **Playback has been stopped and player destroyed!**');
+                    .setDescription('⏹️ **El reproductor ha sido detenido**');
 
                 const sentMessage = await channel.send({ embeds: [stopEmbed] });
                 setTimeout(() => sentMessage.delete().catch(console.error), config.embedTimeout * 1000);
@@ -138,7 +138,7 @@ function initializePlayer(client) {
                 if (player.paused) {
                     const alreadyPausedEmbed = new EmbedBuilder()
                         .setColor(config.embedColor)
-                        .setDescription('⏸️ **Playback is already paused!**');
+                        .setDescription('⏸️ **El reproductor ya esta pausado**');
 
                     const sentMessage = await channel.send({ embeds: [alreadyPausedEmbed] });
                     setTimeout(() => sentMessage.delete().catch(console.error), config.embedTimeout * 1000);
@@ -146,7 +146,7 @@ function initializePlayer(client) {
                     player.pause(true);
                     const pauseEmbed = new EmbedBuilder()
                         .setColor(config.embedColor)
-                        .setDescription('⏸️ **Playback has been paused!**');
+                        .setDescription('⏸️ **El reproductor ha sido pausado**');
 
                     const sentMessage = await channel.send({ embeds: [pauseEmbed] });
                     setTimeout(() => sentMessage.delete().catch(console.error), config.embedTimeout * 1000);
@@ -155,7 +155,7 @@ function initializePlayer(client) {
                 if (!player.paused) {
                     const alreadyResumedEmbed = new EmbedBuilder()
                         .setColor(config.embedColor)
-                        .setDescription('▶️ **Playback is already resumed!**');
+                        .setDescription('▶️ **El reproductor ya ha sido resumido**');
 
                     const sentMessage = await channel.send({ embeds: [alreadyResumedEmbed] });
                     setTimeout(() => sentMessage.delete().catch(console.error), config.embedTimeout * 1000);
@@ -163,7 +163,7 @@ function initializePlayer(client) {
                     player.pause(false);
                     const resumeEmbed = new EmbedBuilder()
                         .setColor(config.embedColor)
-                        .setDescription('▶️ **Playback has been resumed!**');
+                        .setDescription('▶️ **Reproductor resumido!**');
 
                     const sentMessage = await channel.send({ embeds: [resumeEmbed] });
                     setTimeout(() => sentMessage.delete().catch(console.error), config.embedTimeout * 1000);
@@ -174,14 +174,14 @@ function initializePlayer(client) {
                     player.setVolume(Math.min(player.volume + 10, 100));
                     const volumeUpEmbed = new EmbedBuilder()
                         .setColor(config.embedColor)
-                        .setDescription(`🔊 **Volume increased by ${player.volume - oldVolume}% to ${player.volume}!**`);
+                        .setDescription(`🔊 **Volume incrementado de ${player.volume - oldVolume}% a ${player.volume}!**`);
 
                     const sentMessage = await channel.send({ embeds: [volumeUpEmbed] });
                     setTimeout(() => sentMessage.delete().catch(console.error), config.embedTimeout * 1000);
                 } else {
                     const maxVolumeEmbed = new EmbedBuilder()
                         .setColor(config.embedColor)
-                        .setDescription('🔊 **Volume is already at maximum!**');
+                        .setDescription('🔊 **El volumen ya esta el maximo para que se escuche en todo el barrio**');
 
                     const sentMessage = await channel.send({ embeds: [maxVolumeEmbed] });
                     setTimeout(() => sentMessage.delete().catch(console.error), config.embedTimeout * 1000);
@@ -192,14 +192,14 @@ function initializePlayer(client) {
                     player.setVolume(Math.max(player.volume - 10, 10));
                     const volumeDownEmbed = new EmbedBuilder()
                         .setColor(config.embedColor)
-                        .setDescription(`🔉 **Volume decreased by ${oldVolume - player.volume}% to ${player.volume}!**`);
+                        .setDescription(`🔉 **Volume decrementado de ${oldVolume - player.volume}% a ${player.volume}!**`);
 
                     const sentMessage = await channel.send({ embeds: [volumeDownEmbed] });
                     setTimeout(() => sentMessage.delete().catch(console.error), config.embedTimeout * 1000);
                 } else {
                     const minVolumeEmbed = new EmbedBuilder()
                         .setColor(config.embedColor)
-                        .setDescription('🔉 **Volume is already at minimum!**');
+                        .setDescription('🔉 **El volumen ya esta al minimo**');
 
                     const sentMessage = await channel.send({ embeds: [minVolumeEmbed] });
                     setTimeout(() => sentMessage.delete().catch(console.error), config.embedTimeout * 1000);
@@ -262,7 +262,7 @@ function initializePlayer(client) {
             player.destroy();
             const queueEmbed = new EmbedBuilder()
                 .setColor(config.embedColor)
-                .setDescription('**Queue Songs ended! Disconnecting Bot!**');
+                .setDescription('**Cola de reproduccion finalizada, me voy a mimir **');
 
             await channel.send({ embeds: [queueEmbed] });
         }
@@ -275,14 +275,14 @@ function initializePlayer(client) {
             player.setLoop("queue");
             const loopEmbed = new EmbedBuilder()
                 .setColor(config.embedColor)
-                .setTitle("🔁 **Queue loop is activated!**");
+                .setTitle("🔁 **El loop ha sido activado**");
             const sentMessage = await channel.send({ embeds: [loopEmbed] });
             setTimeout(() => sentMessage.delete().catch(console.error), config.embedTimeout * 1000);
         } else {
             player.setLoop("track");
             const loopEmbed = new EmbedBuilder()
                 .setColor(config.embedColor)
-                .setTitle("🔁 **Track loop is activated!**");
+                .setTitle("🔁 **El loop ha sido activado**");
             const sentMessage = await channel.send({ embeds: [loopEmbed] });
             setTimeout(() => sentMessage.delete().catch(console.error), config.embedTimeout * 1000);
         }
@@ -292,7 +292,7 @@ function initializePlayer(client) {
         player.setLoop("none");
         const loopEmbed = new EmbedBuilder()
             .setColor(config.embedColor)
-            .setTitle("❌ **Loop is disabled!**");
+            .setTitle("❌ **Loop desactivado**");
         const sentMessage = await channel.send({ embeds: [loopEmbed] });
         setTimeout(() => sentMessage.delete().catch(console.error), config.embedTimeout * 1000);
     }
