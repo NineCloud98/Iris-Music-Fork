@@ -56,10 +56,10 @@ function initializePlayer(client) {
 
         const embed = new EmbedBuilder()
             .setAuthor({
-                name: 'Now Playing',
+                name: 'Ahora reproduciendo...',
                 iconURL: config.MusicIcon
             })
-            .setDescription('🎶🦊 **Controles:**\n 🔁 `Loop`, ❌ `Deshabilitar`, ⏭️ `Skip`, 📜 `Cola`, 🗑️ `Limpiar`\n ⏹️ `Parar`, ⏸️ `Pausar`, ▶️ `Resumir`, 🔊 `Vol +`, 🔉 `Vol -`')
+            .setDescription('🎶 🦊 **Controles:**\n 🔁 `Loop`, ❌ `Deshabilitar`, ⏭️ `Skip`, 📜 `Cola`, 🗑️ `Limpiar`\n ⏹️ `Parar`, ⏸️ `Pausar`, ▶️ `Resumir`, 🔊 `Vol +`, 🔉 `Vol -`')
             .setImage('attachment://musicard.png')
             .setColor(config.embedColor);
 
@@ -174,7 +174,7 @@ function initializePlayer(client) {
                     player.setVolume(Math.min(player.volume + 10, 100));
                     const volumeUpEmbed = new EmbedBuilder()
                         .setColor(config.embedColor)
-                        .setDescription(`🔊 **Volume incrementado de ${player.volume - oldVolume}% a ${player.volume}!**`);
+                        .setDescription(`🔊 **Volumen incrementado un ${player.volume - oldVolume}% a ${player.volume}%**`);
 
                     const sentMessage = await channel.send({ embeds: [volumeUpEmbed] });
                     setTimeout(() => sentMessage.delete().catch(console.error), config.embedTimeout * 1000);
@@ -192,7 +192,7 @@ function initializePlayer(client) {
                     player.setVolume(Math.max(player.volume - 10, 10));
                     const volumeDownEmbed = new EmbedBuilder()
                         .setColor(config.embedColor)
-                        .setDescription(`🔉 **Volume decrementado de ${oldVolume - player.volume}% a ${player.volume}!**`);
+                        .setDescription(`🔉 **Volume decrementado un ${oldVolume - player.volume}% a ${player.volume}%**`);
 
                     const sentMessage = await channel.send({ embeds: [volumeDownEmbed] });
                     setTimeout(() => sentMessage.delete().catch(console.error), config.embedTimeout * 1000);
@@ -262,7 +262,7 @@ function initializePlayer(client) {
             player.destroy();
             const queueEmbed = new EmbedBuilder()
                 .setColor(config.embedColor)
-                .setDescription('**Cola de reproduccion finalizada, me voy a mimir **');
+                .setDescription('**Cola de reproduccion finalizada, me voy a mimir 😴 **');
 
             await channel.send({ embeds: [queueEmbed] });
         }
