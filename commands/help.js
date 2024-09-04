@@ -12,9 +12,9 @@ module.exports = {
 
       const helpDescription = `
 \`\`\`css
-Welcome to ${botName}!
+Bienvenido a ${botName} 🦊
 
-Your ultimate music companion on Discord. Here are the available commands:
+Disfruta de la experiencia mas zzz en musica:
 
 [ /play    ] - Reproduce una cancion.
 [ /pause   ] - Pausa una cancion.
