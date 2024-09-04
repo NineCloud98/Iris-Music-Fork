@@ -64,7 +64,7 @@ async function play(client, interaction) {
             const errorEmbed = new EmbedBuilder()
                 .setColor(config.embedColor)
                 .setTitle('Error')
-                .setDescription('❌ No results found.');
+                .setDescription('❌ No se encontraron resultados.');
 
             await interaction.editReply({ embeds: [errorEmbed] });
             return;
