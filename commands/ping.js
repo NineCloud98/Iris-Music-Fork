@@ -12,7 +12,7 @@ module.exports = {
     try {
 
       const start = Date.now();
-      interaction.reply("Pinging....").then(msg => {
+      interaction.reply("🍒 Probando latencia....").then(msg => {
         const end = Date.now();
         const embed = new EmbedBuilder()
           .setColor(config.embedColor)
