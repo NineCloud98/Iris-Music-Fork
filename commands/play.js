@@ -80,7 +80,7 @@ async function play(client, interaction) {
                     iconURL: config.CheckmarkIcon,
                     url: config.SupportServer
                 })
-                .setDescription('**➡🦊 Tu cancion ha sido añadida a la cola.**\n**➡🎛️ Usa los botones para controlar la musica**')
+                .setDescription('**🦊 Tu cancion ha sido añadida a la cola.**\n**🎛️ Usa los botones para controlar la musica**')
                  .setFooter({ text: '🎶 Disfruta tu musica! / Ahorita no funciona el cambio de idioma en ingles o español, problemas tecnicos! unu PD: Ola soy homero chino'}),
 
             new EmbedBuilder()
@@ -90,7 +90,7 @@ async function play(client, interaction) {
                     iconURL: config.CheckmarkIcon,
                     url: config.SupportServer
                 })
-                .setDescription('**➡🦊 Tu cancion ha sido añadida a la cola.**\n**➡🎛️ Usa los botones para controlar la musica**')
+                .setDescription('**🦊 Tu cancion ha sido añadida a la cola.**\n**🎛️ Usa los botones para controlar la musica**')
                  .setFooter({ text: '🎶 Disfruta tu musica! / Ahorita no funciona el cambio de idioma en ingles o español, problemas tecnicos! unu PD: Ola soy homero chino'}),
 
             new EmbedBuilder()
@@ -100,7 +100,7 @@ async function play(client, interaction) {
                     iconURL: config.CheckmarkIcon,
                     url: config.SupportServer
                 })
-                .setDescription('**➡🦊 Tu cancion ha sido añadida a la cola.**\n**➡🎛️ Usa los botones para controlar la musica**')
+                .setDescription('**🦊 Tu cancion ha sido añadida a la cola.**\n**🎛️ Usa los botones para controlar la musica**')
                 .setFooter({ text: '🎶 Disfruta tu musica! / Ahorita no funciona el cambio de idioma en ingles o español, problemas tecnicos! unu PD: Ola soy homero chino'})
         ];
 
@@ -134,23 +134,3 @@ module.exports = {
 };
 
 
-/*
-
-  ________.__                        _____.___.___________
- /  _____/|  | _____    ____  ____   \__  |   |\__    ___/
-/   \  ___|  | \__  \ _/ ___\/ __ \   /   |   |  |    |   
-\    \_\  \  |__/ __ \\  \__\  ___/   \____   |  |    |   
- \______  /____(____  /\___  >___  >  / ______|  |____|   
-        \/          \/     \/    \/   \/                  
-
-╔════════════════════════════════════════════════════════════════════════╗
-║                                                                        ║
-║  ## Created by GlaceYT!                                                ║
-║  ## Feel free to utilize any portion of the code                       ║
-║  ## DISCORD :  https://discord.com/invite/xQF9f9yUEM                   ║
-║  ## YouTube : https://www.youtube.com/@GlaceYt                         ║
-║                                                                        ║
-╚════════════════════════════════════════════════════════════════════════╝
-
-
-*/
